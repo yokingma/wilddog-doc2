@@ -46,10 +46,12 @@ ref.child("Jobs").set({
 ref.child("Jobs").set({
     "full_name": "Steve Jobs",
     "gender": "male"
-}, function(error) {
-    if (error == null){
-        // 数据同步到野狗云端成功完成
-    }
+})
+.then(function(){
+    console.info('set data success.')
+})
+.catch(function(err){
+        console.info('set data failed', err.code, err);
 });
 ```
 
@@ -159,6 +161,12 @@ wilddog.sync().ref('full_name').setWithPriority('jack',100)
 var hopperRef = ref.child("Jobs");
 hopperRef.update({
   "full_name": "Tim Cook"
+})
+.then(function(){
+    console.info('update success.')
+})
+.catch(function(err){
+    console.info('update failed', err);
 });
 ```
 
